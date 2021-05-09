@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	h1= bookDetails.title
+	p Author: #{bookDetails.author}
+	p Price: #{bookDetails.price}
+	p noInStock: #{bookDetails.noInStock}
+	p imageUrl: #{bookDetails.imageUrl}
+	a(href=bookDetails.genre[0].url) Genre: #{bookDetails.genre[0].name}
+	a(href=bookDetails.url+'/delete') Delete book
+	a(href=bookDetails.url+'/update') Update Book

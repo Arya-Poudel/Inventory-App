@@ -1,0 +1,14 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		div.navbar
+			a(href="/") Home
+			a(href="/books") All Books
+			a(href="/genres") All genres
+			a(href="/book/create") Create new book
+			a(href="/genre/create") Create new genre
+		div.content
+			block content
