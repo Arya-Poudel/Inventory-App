@@ -9,9 +9,9 @@ block content
 		label(for='author') Author:
 		input(type='select', placeholder='Select author' name='author' required='true' id='author' value=(book===undefined ? '' : book.author) )
 		label(for='price') Price:
-		input(type='textarea', placeholder='price' name='price' required='true' id='price' value=(book===undefined ? '' : book.price))
+		input(type='number', min="1" step="0.01" placeholder='price' name='price' required='true' id='price' value=(book===undefined ? '' : book.price))
 		label(for='noInStock') noInStock:
-		input(type='text', placeholder='noInStock' name='noInStock' id='noInStock' required='true' value=(book===undefined ? '' : book.noInStock))
+		input(type='number' min="1" step="1" placeholder='noInStock' name='noInStock' id='noInStock' required='true' value=(book===undefined ? '' : book.noInStock))
 		label(for='genre') Genre:
 		select(type='select',id='genre' placeholder='Select genre' name='genre' required='true' )
 			for genre in genreList
@@ -20,11 +20,12 @@ block content
 				else
 					option(value=genre._id) #{genre.name}
 		label(for='imageUrl') ImageUrl:
-		input(type='text', placeholder='Imageurl' name='imageUrl' required='true' id
+		input(type='url', placeholder='Image url' name='imageUrl' required='true' id
 		='imageUrl' value=(book===undefined ? '' : book.imageUrl) )
 		button.saveBtn(type='submit') Submit
-		a(href=book.url)
-			button.goBackBtn(type='button') Cancel
+		if(book)
+			a(href=book.url)
+				button.goBackBtn(type='button') Cancel
 
   
 	if errors

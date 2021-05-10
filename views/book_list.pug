@@ -1,7 +1,10 @@
 extends layout
 
 block content
-	h1(style={'text-align': 'center'})= title
+	div.book-list-heading
+		h1(style={'margin-right': '10px'})= title
+		a(href="/book/create")
+			button.createNewBtn Create new book
 
 	div.books-container
 		each book in bookList
@@ -9,5 +12,5 @@ block content
 				a.book-link(href=book.url)
 					img.booklist-img(src=book.imageUrl)
 					p #{book.title} - #{book.author}
-	a(href="/book/create") Create new book
+	
 
