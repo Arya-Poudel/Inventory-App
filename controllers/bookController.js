@@ -2,6 +2,7 @@ var Book = require('../models/book');
 var Genre = require('../models/genre');
 var async = require('async');
 const { body,validationResult } = require("express-validator");
+const URL = require("url").URL;
 
 exports.book_list = function(req, res, next) {
 	Book.find({}).exec(function(err, bookList){
@@ -33,13 +34,19 @@ exports.book_create_get = function(req, res, next){
 };
 
 exports.book_create_post = [
-
     // Validate and sanitise fields.
-    body('title', 'Title must not be empty.').trim().isLength({ min: 1 }).escape(),
+    body('title', 'Title must not be empty.').trim().isLength({ min: 1 }),
     body('author', 'Author must not be empty.').trim().isLength({ min: 1 }).escape(),
     body('price', 'Price must be specified correctly.').trim().isLength({ min: 1 }).isDecimal({min:1}).escape(),
     body('noInStock', 'noInStock must be an  integer').trim().isLength({ min: 1 }).isInt({min: 0}).escape(),
-    body('imageUrl', 'imageUrl must not be empty').trim().isLength({ min: 1 }).escape(),
+    body('imageUrl', 'You must specify a url').custom(value=> {
+        try {
+            new URL(value);
+            return true;
+        } catch (err) {
+            return false;
+        }
+    }),
     body('genre', 'Genre must not be empty.').trim().isLength({ min: 1 }).escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
@@ -48,6 +55,7 @@ exports.book_create_post = [
         const errors = validationResult(req);
 
         // Create a Book object with escaped and trimmed data.
+
         var book = new Book(
           { title: req.body.title,
             author: req.body.author,
@@ -101,11 +109,18 @@ exports.book_update_get = function(req, res, next){
 exports.book_update_post =  [
 
     // Validate and sanitise fields.
-    body('title', 'Title must not be empty.').trim().isLength({ min: 1 }).escape(),
+    body('title', 'Title must not be empty.').trim().isLength({ min: 1 }),
     body('author', 'Author must not be empty.').trim().isLength({ min: 1 }).escape(),
     body('price', 'Price must be specified correctly.').trim().isLength({ min: 1 }).isDecimal({min:1}).escape(),
     body('noInStock', 'noInStock must be an  integer').trim().isLength({ min: 1 }).isInt({min: 0}).escape(),
-    body('imageUrl', 'imageUrl must not be empty').trim().isLength({ min: 1 }).escape(),
+    body('imageUrl', 'You must specify a url').custom(value=> {
+        try {
+            new URL(value);
+            return true;
+        } catch (err) {
+            return false;
+        }
+    }),
     body('genre', 'Genre must not be empty.').trim().isLength({ min: 1 }).escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {

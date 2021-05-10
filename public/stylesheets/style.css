@@ -114,6 +114,13 @@ img{
     height: 400px;
     margin: 0 auto;
 }
+
+.book-list-heading{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+}
 /*book-detail*/
 .book-details{
 	background: #f7e3ce;

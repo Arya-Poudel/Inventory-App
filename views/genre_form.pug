@@ -5,7 +5,7 @@ block content
 
 	form.genreform(method='POST' action='')
 		label(for='name') Genre:
-		input(id='name' type='text', placeholder='Fantasy, Poetry etc.' name='name' value=(genre=== undefined ? '' : genre.name))
+		input(id='name' type='text', placeholder='Fantasy, Poetry etc.' name='name' required='true' value=(genre=== undefined ? '' : genre.name))
 		button.saveBtn(type='submit') Submit
 
 	if errors
