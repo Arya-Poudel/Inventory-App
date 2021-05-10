@@ -1,12 +1,12 @@
 extends layout
 
 block content
-	h1 #{title}
+	h1(style={'text-align': 'center' ,'margin' : '10px 0'}) #{title}
 
-	form(method='POST' action='')
+	form.genreform(method='POST' action='')
 		label(for='name') Genre:
 		input(id='name' type='text', placeholder='Fantasy, Poetry etc.' name='name' value=(genre=== undefined ? '' : genre.name))
-		button(type='submit') Submit
+		button.saveBtn(type='submit') Submit
 
 	if errors
 		p= errors

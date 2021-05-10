@@ -1,11 +1,13 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
-
-	p The store has the following records:
-
-	ul
-		li BOOKS: !{data.book_count}
-		li GENRES: !{data.genre_count}
+	div.home-content
+		img.home-image(src='https://images2.minutemediacdn.com/image/upload/c_crop,h_1890,w_3363,x_0,y_193/v1565628997/shape/mentalfloss/gettyimages-944631208.jpg?itok=GIIQbABu')
+		div.home-desc
+			h1 #{title}
+			p The store has the following records:
+			div.home-desc-links
+				a(href='/books') 
+					button(type='button') BOOKS: !{data.book_count}
+				a(href='/genres')
+					button(type='button') GENRES: !{data.genre_count}

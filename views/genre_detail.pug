@@ -1,13 +1,17 @@
 extends layout
 
 block content
-	h1= genre.name
-	ul
-		each book in genreBooks
-			li
-				a(href=book.url) #{book.title} - #{book.author} 
-		else
-			p This genre has no books
-	a(href=genre.url+'/delete') Delete genre
-	a(href=genre.url+'/update') Update genre
+	div.genre-detail
+		h1= genre.name
+		ul
+			each book in genreBooks
+				li.books-genre-link
+					a(href=book.url) #{book.title} - #{book.author} 
+			else
+				p This genre has no books
+		div.genre-detail-btns
+			a(href=genre.url+'/delete')
+				button.deleteBtn Delete genre
+			a(href=genre.url+'/update')
+				button.saveBtn Update genre
 

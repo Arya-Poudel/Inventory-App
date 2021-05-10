@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	h1 #{title}
+	h1(style={'text-align': 'center' ,'margin' : '10px 0'}) #{title}
 	form.bookform(method='POST' action='')
 		label(for='title') Title:
 		input(type='text', placeholder='Name of book' name='title' required='true' id
@@ -22,7 +22,9 @@ block content
 		label(for='imageUrl') ImageUrl:
 		input(type='text', placeholder='Imageurl' name='imageUrl' required='true' id
 		='imageUrl' value=(book===undefined ? '' : book.imageUrl) )
-		button(type='submit') Submit
+		button.saveBtn(type='submit') Submit
+		a(href=book.url)
+			button.goBackBtn(type='button') Cancel
 
   
 	if errors

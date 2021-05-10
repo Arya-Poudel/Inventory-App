@@ -5,38 +5,258 @@
 }
 
 body {
-  /*padding: 50px;*/
+  background:#f5b78b;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+img{
+	max-width: 100%;
 }
 
+/*navbar*/
 .navbar{
 	display: flex;
 	justify-content: space-around;
-	background: mistyrose;
-	margin-bottom: 10px;
+	background: #ef9d63;
+    padding: 20px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.navlink {
+    color: #902828;
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: .1rem;
+    font-weight: 700;
+ }
+
+.navlink:hover{
+	text-decoration: underline;
+}
+
+/*home*/
+.home-content{
+	margin: 10px;
+	display: grid;
+}
+
+@media(min-width: 700px){
+	.home-content{
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 10px;
+		justify-content: center;
+	}
+	.home-desc{
+		margin: 60px auto;
+	}
+}
+
+.home-content p{
+	font-weight: bold;
+	font-size: 1.1rem;
+	padding: 10px 0;
+}
+
+.home-image{
+	width: 100%;
+}
+
+.home-desc-links{
+	display: flex;
+	justify-content: space-around;
+}
+
+.home-desc-links button{
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid #ef9d63;
+	background: #ef9d63;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.home-desc-links button:hover{
+	color: #902828;
+}
+
+/*booklist*/
+
+.books-container{
+	width: 90%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,380px));
+    grid-gap: 20px;
+    justify-content: space-around;
+}
+.books{
+	border: 2px solid #cc6b56;
+    border-radius: 15px;
+    background: #cc6b56;
+}
+
+.books:hover{
+	background: #f3d6c6;
+}
+
+.book-link{
+	text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    display: grid;
+}
+
+.booklist-img{
+	width: 90%;
 	padding: 10px;
+    height: 400px;
+    margin: 0 auto;
+}
+/*book-detail*/
+.book-details{
+	background: #f7e3ce;
+    padding: 10px;
+    border: 1px solid #f7e3ce;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-.content{
-	padding: 50px;
+@media (min-width: 525px){
+.book-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-.bookform{
+.book-details-info{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.book-details-info a{
+	color: black;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+button{
+	padding: 8px;
+	border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+}
+
+.deleteBtn{
+    background: #c5618b;
+}
+
+.deleteBtn:hover{
+	background: #d21161;
+}
+
+.saveBtn, .createNewBtn, .updateBookBtn{
+    background: #28bf57;
+    margin: 10px 0;
+}
+
+.saveBtn:hover, .createNewBtn:hover, .updateBookBtn:hover {
+	background: #006400;
+}
+/*delete book*/
+.deleteBookConfirm{
 	display: grid;
 	grid-gap: 10px;
+	justify-content: center;
+	align-items: center;
+}
+
+.goBackBtn{
+	background: #383333;
+	margin-left: 15px;
+}
+
+.goBackBtn:hover{
+	background: #000000;
+}
+
+/*bookForm*/
+
+.bookform, .genreform{
+	display: grid;
+	grid-gap: 10px;
+	justify-content: center;
+	align-items: center;
 	width: 90%;
-	max-width: 400px;
+	max-width: 350px;
 	margin: 0 auto;
+	text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    background: #b2ebf2;
+    color: #902828;
 }
 
-.bookform input, .bookform select{
-	height: 1.7rem;
+.bookform label, .genreform label{
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.bookform input, .genreform input{
+	height: 1.5rem;
 	border: 1px solid black;
-	border-radius: 5px
-	padding: 10px;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
+/*genrelist*/
+
+.genrelist, .genre-detail{
+	display: grid;
+	grid-gap: 10px;
+	max-width: 450px;
+	width: 90%;
+	background: #f1f0ec;
+	border-radius: 15px;
+	padding: 15px;
+	position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+.genrelist ul, .genre-detail ul{
+	list-style: none;
+}
+
+.genrelistlinks, .books-genre-link{
+	padding: 10px;
+	margin: 10px;
+	background: #ef9d63;;
+}
+
+.genrelistlinks a{
+	color: #902828;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.books-genre-link a{
+	color: #902828;
+	font-weight: 700;
+}
+
+/*genredetail*/
+.genre-detail-btns{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}

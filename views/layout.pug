@@ -3,12 +3,12 @@ html
 	head
 		title= title
 		link(rel='stylesheet', href='/stylesheets/style.css')
+		meta(name="viewport" content="width=device-width,initial-scale=1")
 	body
 		div.navbar
-			a(href="/") Home
-			a(href="/books") All Books
-			a(href="/genres") All genres
-			a(href="/book/create") Create new book
-			a(href="/genre/create") Create new genre
+			a.navlink(href="/") HOME
+			a.navlink(href="/books") BOOKS
+			a.navlink(href="/genres") GENRES
+			
 		div.content
 			block content

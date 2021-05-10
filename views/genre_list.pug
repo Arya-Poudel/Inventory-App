@@ -1,9 +1,12 @@
 extends layout
 
 block content
-	h1= title
+	div.genrelist
+		h1= title
 
-	ul
-		each genre in genreList
-			li
-				a(href=genre.url) #{genre.name} 
+		ul
+			each genre in genreList
+				li.genrelistlinks
+					a(href=genre.url) #{genre.name} 
+		a(href="/genre/create")
+			button.createNewBtn Create new genre

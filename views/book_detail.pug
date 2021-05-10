@@ -1,11 +1,15 @@
 extends layout
 
 block content
-	h1= bookDetails.title
-	p Author: #{bookDetails.author}
-	p Price: #{bookDetails.price}
-	p noInStock: #{bookDetails.noInStock}
-	p imageUrl: #{bookDetails.imageUrl}
-	a(href=bookDetails.genre[0].url) Genre: #{bookDetails.genre[0].name}
-	a(href=bookDetails.url+'/delete') Delete book
-	a(href=bookDetails.url+'/update') Update Book
+	div.book-details
+		img(src=bookDetails.imageUrl)
+		div.book-details-info
+			h1= bookDetails.title
+			h2 Author: #{bookDetails.author}
+			h3 Price: Nrs. #{bookDetails.price}
+			h3 In Stock: #{bookDetails.noInStock}
+			a(href=bookDetails.genre[0].url) Genre: #{bookDetails.genre[0].name}
+			a(href=bookDetails.url+'/update')
+				button.updateBookBtn(type='button') Update Book
+			a(href=bookDetails.url+'/delete')
+				button.deleteBtn(type='button') Delete book

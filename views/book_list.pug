@@ -1,10 +1,13 @@
 extends layout
 
 block content
-	h1= title
+	h1(style={'text-align': 'center'})= title
 
-	ul
+	div.books-container
 		each book in bookList
-			li
-				a(href=book.url) #{book.title} - #{book.author} 
+			div.books
+				a.book-link(href=book.url)
+					img.booklist-img(src=book.imageUrl)
+					p #{book.title} - #{book.author}
+	a(href="/book/create") Create new book
 

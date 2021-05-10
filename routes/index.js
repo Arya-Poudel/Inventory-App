@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
   	}
   }, function(err, results){
   	if (err) { return next(err)}
-  	res.render('index', { title: 'Inventory App Home', data: results});
+  	res.render('index', { title: 'Inventory Store', data: results});
   })
 });
 

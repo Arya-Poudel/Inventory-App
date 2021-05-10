@@ -1,20 +1,24 @@
 extends layout
 
 block content
-	h1 #{title}
 
-	if genre_books.length
+	div.genre-detail
+		h1 #{title} - "#{genre.name}"
 
-		p Delete the following books before deleting this genre.
+		if genre_books.length
 
-		each book in genre_books
-			ul
-				li
-					a(href=book.url) #{book.title}
+			p Delete the following books before deleting this genre.
 
-	else
-		p Are you sure you want to delete this Genre?
+			each book in genre_books
+				ul
+					li.books-genre-link
+						a(href=book.url) #{book.title}
 
-		form(method='POST' action='')
-			input(type='hidden' name='id' value=genre._id)
-			button(type='submit') Delete
+		else
+			p Are you sure you want to delete this Genre?
+
+			form(method='POST' action='')
+				input(type='hidden' name='id' value=genre._id)
+				button.deleteBtn(type='submit') Delete
+				a(href=genre.url)
+					button.goBackBtn(type='button') Go back
