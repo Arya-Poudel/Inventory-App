@@ -6,19 +6,16 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var compression = require('compression');
 var helmet = require('helmet');
-var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 
 var app = express();
 
-// app.use(helmet());
 app.use(
   helmet({
     contentSecurityPolicy: false,
   })
 );
-app.use(cors());
 app.use(compression()); //Compress all routes
 
 //Set up mongoose connection
