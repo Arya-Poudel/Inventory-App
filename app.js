@@ -4,14 +4,29 @@ var router = express.Router();
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var compression = require('compression');
+var helmet = require('helmet');
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 
 var app = express();
 
+// app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+app.use(cors());
+app.use(compression()); //Compress all routes
+
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://InventoryAdmin:cySR5hwdFf5RK7f2@cluster0.sk1tw.mongodb.net/InventoryApp?retryWrites=true&w=majority';
+
+var dev_db_url = 'mongodb+srv://InventoryAdmin:cySR5hwdFf5RK7f2@cluster0.sk1tw.mongodb.net/InventoryApp?retryWrites=true&w=majority';
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
+
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
